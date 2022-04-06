@@ -10,17 +10,11 @@ class TestJelesDiákok(TestCase):
     def test_diakok_vannak_diakok(self):
         adat = "Kis János+15,5;Nagy Éva+14,8;Szabó Éva+21.4;Péter Imre+20,4;Kis Gergő+17,8;Magony Nóra+19,2;Szántó Regő+14,8"
         aktualis = feladatok.fizetendo_osszeg(adat)
-        import math
-        elvart = math.fabs(aktualis-123.9)
-        print(elvart)
-        eredmeny=elvart<0.001
-        self.assertTrue(eredmeny, "Rosszul határozta meg a diákoknak fizetendő teljes összeget.")
+        elvart=37170
+        self.assertEqual(aktualis,elvart, "Rosszul határozta meg a diákoknak fizetendő teljes összeget.")
 
     def test_diakok_nincsenek_diakok(self):
         adat = ""
         aktualis = feladatok.fizetendo_osszeg(adat)
-        import math
-        elvart = math.fabs(aktualis-0)
-        print(elvart)
-        eredmeny=elvart<0.001
-        self.assertTrue(eredmeny, "Rosszul határozta meg a diákoknak fizetendő teljes összeget.")
+        elvart=0
+        self.assertEqual(aktualis,elvart, "Rosszul határozta meg a diákoknak fizetendő teljes összeget.")
